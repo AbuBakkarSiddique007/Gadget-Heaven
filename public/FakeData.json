@@ -1,0 +1,206 @@
+[
+    {
+        "product_id": 1,
+        "product_title": "Apple iPhone 15 Pro Max",
+        "product_image": "https://i.ibb.co.com/30wsjjF/Apple-i-Phone-15-Pro-Max.jpg",
+        "category": "Smartphones",
+        "price": 1299,
+        "description": "Experience the ultimate smartphone with the iPhone 15 Pro Max.",
+        "specification": [
+            "6.7-inch Super Retina XDR display",
+            "A17 Bionic chip",
+            "Triple-camera system (48MP Main, 12MP Telephoto, 12MP Ultrawide)",
+            "LiDAR Scanner",
+            "Up to 2TB storage"
+        ],
+        "availability": true,
+        "rating": 4.8
+    },
+    {
+        "product_id": 2,
+        "product_title": "Samsung Galaxy S23 Ultra",
+        "product_image": "https://i.ibb.co.com/59Zw0xS/Samsung-Galaxy-S23-Ultra.jpg",
+        "category": "Smartphones",
+        "price": 1199,
+        "description": "Redefine productivity with the Galaxy S23 Ultra.",
+        "specification": [
+            "6.8-inch AMOLED 2X display",
+            "Snapdragon 8 Gen 2",
+            "200MP quad-camera system",
+            "5000mAh battery",
+            "S-Pen support"
+        ],
+        "availability": true,
+        "rating": 4.7
+    },
+    {
+        "product_id": 3,
+        "product_title": "Google Pixel 8 Pro",
+        "product_image": "https://i.ibb.co.com/G5HtX56/Google-Pixel-8-Pro.jpg",
+        "category": "Smartphones",
+        "price": 999,
+        "description": "Capture moments with the AI-powered Pixel 8 Pro camera.",
+        "specification": [
+            "6.7-inch LTPO OLED",
+            "Google Tensor G3",
+            "50MP triple-camera system",
+            "Face Unlock",
+            "128GB/256GB storage"
+        ],
+        "availability": true,
+        "rating": 4.5
+    },
+    {
+        "product_id": 4,
+        "product_title": "OnePlus 11",
+        "product_image": "https://i.ibb.co.com/zbMZspm/One-Plus-11.jpg",
+        "category": "Smartphones",
+        "price": 749,
+        "description": "Experience fast performance with the OnePlus 11.",
+        "specification": [
+            "6.7-inch AMOLED QHD+",
+            "Snapdragon 8 Gen 2",
+            "50MP Hasselblad Camera",
+            "100W fast charging",
+            "120Hz refresh rate"
+        ],
+        "availability": false,
+        "rating": 4.4
+    },
+    {
+        "product_id": 5,
+        "product_title": "Sony Xperia 1 V",
+        "product_image": "https://i.ibb.co.com/55NVWyh/Sony-Xperia-1-V.jpg",
+        "category": "Smartphones",
+        "price": 1399,
+        "description": "Pro-level camera performance in your hands.",
+        "specification": [
+            "6.5-inch 4K HDR OLED",
+            "Snapdragon 8 Gen 2",
+            "48MP triple-camera system",
+            "Real-time Eye Autofocus",
+            "Audio jack support"
+        ],
+        "availability": true,
+        "rating": 4.6
+    },
+    {
+        "product_id": 6,
+        "product_title": "Xiaomi 13 Pro",
+        "product_image": "https://i.ibb.co.com/Fmqvv2M/Xiaomi-13-Pro.jpg",
+        "category": "Smartphones",
+        "price": 1099,
+        "description": "Flagship features at a competitive price with the Xiaomi 13 Pro.",
+        "specification": [
+            "6.73-inch AMOLED WQHD+",
+            "Leica 50MP triple-camera",
+            "Snapdragon 8 Gen 2",
+            "120W HyperCharge",
+            "5000mAh battery"
+        ],
+        "availability": true,
+        "rating": 4.5
+    },
+    {
+        "product_id": 7,
+        "product_title": "Dell XPS 13",
+        "product_image": "https://i.ibb.co.com/Y32nqXx/Dell-XPS-13.jpg",
+        "category": "Laptops",
+        "price": 1599,
+        "description": "Sleek design with powerful performance for everyday use.",
+        "specification": [
+            "13.4-inch InfinityEdge display",
+            "Intel Core i7 13th Gen",
+            "16GB LPDDR5 RAM",
+            "1TB SSD",
+            "FHD+ resolution"
+        ],
+        "availability": true,
+        "rating": 4.8
+    },
+    {
+        "product_id": 8,
+        "product_title": "MacBook Pro 14-inch",
+        "product_image": "https://i.ibb.co.com/D7dTLYK/Mac-Book-Pro-14-inch.jpg",
+        "category": "Laptops",
+        "price": 2499,
+        "description": "Professional-grade performance for creators.",
+        "specification": [
+            "14.2-inch Liquid Retina XDR display",
+            "M2 Pro chip",
+            "16GB RAM",
+            "512GB SSD",
+            "MagSafe charging"
+        ],
+        "availability": false,
+        "rating": 4.9
+    },
+    {
+        "product_id": 9,
+        "product_title": "Lenovo ThinkPad X1 Carbon",
+        "product_image": "https://i.ibb.co.com/g6hQrGt/Lenovo-Think-Pad-X1-Carbon.jpg",
+        "category": "Laptops",
+        "price": 1899,
+        "description": "The ultimate laptop for business professionals.",
+        "specification": [
+            "14-inch 2K display",
+            "Intel Core i7 12th Gen",
+            "16GB LPDDR5 RAM",
+            "1TB SSD",
+            "Carbon-fiber chassis"
+        ],
+        "availability": true,
+        "rating": 4.7
+    },
+    {
+        "product_id": 10,
+        "product_title": "HP Spectre x360",
+        "product_image": "https://i.ibb.co.com/30GTbgn/HP-Spectre-x360.jpg",
+        "category": "Laptops",
+        "price": 1749,
+        "description": "A premium 2-in-1 laptop for versatility and power.",
+        "specification": [
+            "13.5-inch OLED touchscreen",
+            "Intel Core i7 12th Gen",
+            "16GB RAM",
+            "512GB SSD",
+            "360-degree hinge"
+        ],
+        "availability": true,
+        "rating": 4.6
+    },
+    {
+        "product_id": 11,
+        "product_title": "Sony WH-1000XM5",
+        "product_image": "https://i.ibb.co.com/DftVFTs/Sony-WH-1000-XM5.jpg",
+        "category": "Accessories",
+        "price": 399,
+        "description": "Industry-leading noise cancellation for superior sound.",
+        "specification": [
+            "Over-ear design",
+            "30 hours of battery life",
+            "Adaptive Sound Control",
+            "Quick Charge support",
+            "LDAC codec support"
+        ],
+        "availability": true,
+        "rating": 4.7
+    },
+    {
+        "product_id": 12,
+        "product_title": "Logitech MX Master 3S",
+        "product_image": "https://i.ibb.co.com/pf3MxsW/Logitech-MX-Master-3-S.jpg",
+        "category": "Accessories",
+        "price": 99,
+        "description": "Ergonomic design with precise control for productivity.",
+        "specification": [
+            "4000DPI Darkfield sensor",
+            "Bluetooth and USB receiver",
+            "Ergonomic design",
+            "70 days battery life",
+            "MagSpeed Electromagnetic scrolling"
+        ],
+        "availability": true,
+        "rating": 4.6
+    }
+]

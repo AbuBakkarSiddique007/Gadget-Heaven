@@ -8,6 +8,7 @@ import {
 import Root from './components/Root/Root.jsx';
 import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import Home from './components/Home/Home.jsx';
+import ProductDetails from './components/ProuctDetails/ProductDetails.jsx';
 
 
 const router = createBrowserRouter([
@@ -19,6 +20,12 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home></Home>
+      },
+      {
+        // path: 'books/:bookId',
+        path: '/products/:product_id',
+        element: <ProductDetails></ProductDetails>,
+        loader: () => fetch('/FakeData.json')
       }
     ]
   },
