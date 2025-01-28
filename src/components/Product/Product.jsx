@@ -17,7 +17,7 @@ const Product = ({ product }) => {
 
     return (
         <div>
-            <div className="border-2 border-gray-400  card bg-base-100 w-96 shadow-sm p-3 flex flex-col justify-center mx-auto space-y-3">
+            <div className="border-2 border-gray-400  card bg-base-100 w-96 shadow-sm p-3 flex flex-col justify-center mx-auto space-y-3 mb-2">
                 <figure className="border-2 border-gray-300 rounded-xl p-2">
                     <img className="h-[200px] w-full rounded-lg"
                         src={product_image} />

@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { FcRating } from "react-icons/fc";
 import { IoMdHeart } from "react-icons/io";
+import { addToStoredCartList } from "../../Utilities/LocalStorage";
 
 const ProductDetails = () => {
 
@@ -22,6 +23,9 @@ const ProductDetails = () => {
         availability,
         rating } = product;
 
+    const handleAddToCart = () => {
+        addToStoredCartList(product_id);
+    }
 
     return (
         <div className="border-2 border-black-600">
@@ -36,10 +40,8 @@ const ProductDetails = () => {
                 </p>
             </div>
 
-
             {/* Details Card section */}
             <div>
-
                 <div className="max-w-6xl flex justify-center items-center border-2 border-red-500 mx-auto rounded-3xl -mt-40">
                     <div className="w-1/3 border-2 border-red-500 ">
                         <figure className="border-2 border-red-500 p-3">
@@ -56,16 +58,18 @@ const ProductDetails = () => {
                         <p className="text-2xl mt-5">{description}</p>
 
                         <p className="text-2xl mt-5"><span className="font-bold">Specification:</span>
-
                             {
                                 specification.map((spec, index) => <li key={index} className="text-lg">{spec}</li>)
                             }
-
                         </p>
-
                         <div className="flex justify-start items-center gap-5 mt-10">
-                            <button className="btn btn-accent rounded-full"> Add to Cart </button>
-                            <button className="text-4xl"><IoMdHeart /></button>
+                            <button onClick={() => handleAddToCart(product_id)} className="btn btn-accent rounded-full">
+                                Add to Cart
+                            </button>
+
+                            <button className="text-4xl">
+                                <IoMdHeart />
+                            </button>
                         </div>
                     </div>
                 </div>
