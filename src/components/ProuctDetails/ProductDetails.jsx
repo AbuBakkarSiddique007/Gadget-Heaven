@@ -2,7 +2,7 @@ import { useLoaderData, useParams } from "react-router-dom";
 import { HiCurrencyDollar } from "react-icons/hi";
 import { FcRating } from "react-icons/fc";
 import { IoMdHeart } from "react-icons/io";
-import { addToStoredCartList } from "../../Utilities/LocalStorage";
+import { addToStoredCartList, addToStoredWishList } from "../../Utilities/LocalStorage";
 
 const ProductDetails = () => {
 
@@ -25,6 +25,10 @@ const ProductDetails = () => {
 
     const handleAddToCart = () => {
         addToStoredCartList(product_id);
+    }
+
+    const handleAddToWishList = () => {
+        addToStoredWishList(product_id);
     }
 
     return (
@@ -56,7 +60,10 @@ const ProductDetails = () => {
                         <p className="text-2xl mt-5"> {category}</p>
                         <p className="text-2xl mt-5 flex justify-start items-center gap-2">Rating: {rating} <span><FcRating /></span> </p>
                         <p className="text-2xl mt-5">{description}</p>
-
+                        <p>
+                            <span className="text-2xl font-bold">Availability:</span>
+                            {availability ? <span className="text-green-500 text-2xl"> In Stock</span> : <span className="text-red-500 text-2xl"> Out of Stock</span>}
+                        </p>
                         <p className="text-2xl mt-5"><span className="font-bold">Specification:</span>
                             {
                                 specification.map((spec, index) => <li key={index} className="text-lg">{spec}</li>)
@@ -66,9 +73,11 @@ const ProductDetails = () => {
                             <button onClick={() => handleAddToCart(product_id)} className="btn btn-accent rounded-full">
                                 Add to Cart
                             </button>
-
-                            <button className="text-4xl">
-                                <IoMdHeart />
+                            <button
+                                className="btn btn-primary"
+                                onClick={() => handleAddToWishList(product_id)}
+                            >
+                                <IoMdHeart className="text-4xl" />
                             </button>
                         </div>
                     </div>
