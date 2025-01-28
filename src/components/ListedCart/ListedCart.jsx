@@ -1,19 +1,18 @@
 import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import { getStoredCartList, getStoredWishList, clearCartList } from '../../Utilities/LocalStorage'; 
+import { getStoredCartList, getStoredWishList, clearCartList } from '../../Utilities/LocalStorage';
 import Card from '../Card/Card';
+import { ToastContainer, toast, Bounce } from 'react-toastify';
 
 const ListedCart = () => {
     const [cartList, setCartList] = useState([]);
     const [originalCartList, setOriginalCartList] = useState([]);
     const [wishList, setWishList] = useState([]);
     const [originalWishList, setOriginalWishList] = useState([]);
-    const [sort, setSort] = useState('');
-    const [wishSort, setWishSort] = useState('');
     const [totalAmount, setTotalAmount] = useState(0);
-    const [showModal, setShowModal] = useState(false); 
+    const [showModal, setShowModal] = useState(false);
     const allProducts = useLoaderData();
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     useEffect(() => {
         const storedCartList = getStoredCartList() || [];
@@ -36,27 +35,12 @@ const ListedCart = () => {
             setOriginalWishList(wishProductList);
         }
     }, [allProducts]);
+    console.log(originalWishList);
+    
 
-    const handleCartSort = (sortType) => {
-        setSort(sortType);
-        let sortedCartList = [];
-        if (sortType === 'price') {
-            sortedCartList = [...originalCartList].sort((a, b) => a.price - b.price);
-        } else if (sortType === 'rating') {
-            sortedCartList = [...originalCartList].sort((a, b) => a.rating - b.rating);
-        }
+    const handleSortByPrice = () => {
+        const sortedCartList = [...originalCartList].sort((a, b) => b.price - a.price);
         setCartList(sortedCartList);
-    };
-
-    const handleWishSort = (sortType) => {
-        setWishSort(sortType);
-        let sortedWishList = [];
-        if (sortType === 'price') {
-            sortedWishList = [...originalWishList].sort((a, b) => a.price - b.price);
-        } else if (sortType === 'rating') {
-            sortedWishList = [...originalWishList].sort((a, b) => a.rating - b.rating);
-        }
-        setWishList(sortedWishList);
     };
 
     const handleRemoveFromCart = (productId) => {
@@ -66,16 +50,40 @@ const ListedCart = () => {
 
         const updatedTotal = updatedCartList.reduce((sum, product) => sum + product.price, 0);
         setTotalAmount(updatedTotal);
+
+        toast.warn('Item successfully removed from your Cart!!', {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     };
 
     const handleRemoveFromWishlist = (productId) => {
         const updatedWishList = wishList.filter(product => product.product_id !== productId);
         setWishList(updatedWishList);
         setOriginalWishList(updatedWishList);
+
+        toast.warn('Item successfully removed from your WishList!', {
+            position: "top-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+        });
     };
 
     const handleAddToCartFromWishlist = () => {
-        navigate('/'); 
+        navigate('/');
     };
 
     const handlePurchase = () => {
@@ -83,17 +91,18 @@ const ListedCart = () => {
         setOriginalCartList([]);
         setTotalAmount(0);
         clearCartList();
-        setShowModal(true); 
+        setShowModal(true);
     };
 
     const closeModal = () => {
-        setShowModal(false); 
-        navigate('/'); 
+        setShowModal(false);
+        navigate('/');
     };
 
     return (
-        <div className="max-w-6xl mx-auto">
-            <div className="border-2 border-black-600">
+        <div>
+            {/* Dashboard Text */}
+            <div className="p-10 shadow-lg pt-5 pb-10 bg-customPurple text-white">
                 <h1 className="text-3xl font-bold text-center mt-10">Dashboard</h1>
                 <p className="text-2xl text-center mt-5 mb-5">
                     Explore the latest gadgets that will take your experience to
@@ -102,34 +111,33 @@ const ListedCart = () => {
                 </p>
             </div>
 
-            <div role="tablist" className="tabs tabs-border">
+            {/* Tabs */}
+            <div role="tablist" className="tabs tabs-border flex justify-center items-center mt-10 max-w-6xl mx-auto">
+
                 {/* Cart Section */}
-                <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="Cart" defaultChecked />
+                <input type="radio" name="my_tabs_2" role="tab" className="tab btn text-xl" aria-label="Cart" defaultChecked />
                 <div className="tab-content border-base-300 bg-base-100 p-10">
-                    <div className="flex justify-between items-center border-2 border-red-500">
-                        <h2>Listed Cart: ({cartList.length})</h2>
-                        <div className="space-x-4">
-                            <div className="dropdown mb-4 bg-gray-400">
-                                <div tabIndex={0} role="button" className="btn m-1">
-                                    {sort ? `Sort by: ${sort}` : 'Sort By'}
-                                </div>
-                                <ul
-                                    tabIndex={0}
-                                    className="dropdown-content menu rounded-box z-1 w-52 p-2 shadow-sm bg-amber-300"
-                                >
-                                    <li onClick={() => handleCartSort('rating')}>
-                                        <a>Rating</a>
-                                    </li>
-                                    <li onClick={() => handleCartSort('price')}>
-                                        <a>Price</a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <button className="btn btn-accent rounded-full">
+
+                    <div className="flex justify-between items-center p-4 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-xl shadow-lg mb-2">
+                        <h2 className="text-white text-2xl font-semibold">Listed Cart: ({cartList.length})</h2>
+
+                        <div className="flex items-center space-x-6">
+                            {/* Sort by Price button */}
+                            <button
+                                className="btn btn-outline text-white bg-transparent border-2 border-white rounded-full px-4 py-2 hover:bg-white hover:text-gray-800 focus:outline-none"
+                                onClick={handleSortByPrice}
+                            >
+                                Sort by Price
+                            </button>
+
+                            {/* Total amount button */}
+                            <button className="btn btn-accent rounded-full px-6 py-3 text-lg font-medium bg-yellow-500 text-white hover:bg-yellow-400 focus:outline-none">
                                 Total Amount: ${totalAmount.toFixed(2)}
                             </button>
+
+                            {/* Purchase button */}
                             <button
-                                className={`btn btn-accent rounded-full ${totalAmount === 0 ? 'btn-disabled' : ''}`}
+                                className={`btn rounded-full px-6 py-3 text-lg font-medium bg-green-500 text-white ${totalAmount === 0 ? 'bg-gray-400 cursor-not-allowed' : 'hover:bg-green-400'}`}
                                 onClick={handlePurchase}
                                 disabled={totalAmount === 0}
                             >
@@ -137,6 +145,7 @@ const ListedCart = () => {
                             </button>
                         </div>
                     </div>
+
                     <ul>
                         {cartList.map((product) => (
                             <Card
@@ -149,27 +158,15 @@ const ListedCart = () => {
                 </div>
 
                 {/* Wishlist Section */}
-                <input type="radio" name="my_tabs_2" role="tab" className="tab" aria-label="WishList" />
+                <input type="radio" name="my_tabs_2" role="tab" className="tab btn text-xl ml-2" aria-label="WishList" />
                 <div className="tab-content border-base-300 bg-base-100 p-10">
-                    <div className="flex justify-between items-center border-2 border-blue-500">
-                        <h2>My Wish List: ({wishList.length})</h2>
-                        <div className="dropdown mb-4 bg-gray-400">
-                            <div tabIndex={0} role="button" className="btn m-1">
-                                {wishSort ? `Sort by: ${wishSort}` : 'Sort By'}
-                            </div>
-                            <ul
-                                tabIndex={0}
-                                className="dropdown-content menu rounded-box z-1 w-52 p-2 shadow-sm bg-amber-300"
-                            >
-                                <li onClick={() => handleWishSort('rating')}>
-                                    <a>Rating</a>
-                                </li>
-                                <li onClick={() => handleWishSort('price')}>
-                                    <a>Price</a>
-                                </li>
-                            </ul>
-                        </div>
+
+                    <div className="flex justify-between items-center p-4 text-white rounded-xl shadow-lg bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 mb-2">
+                        <h2 className="text-2xl font-semibold">
+                            WishList: ({wishList.length})
+                        </h2>
                     </div>
+
                     <ul>
                         {wishList.map((product) => (
                             <Card
@@ -198,6 +195,19 @@ const ListedCart = () => {
                     </div>
                 </div>
             )}
+            <ToastContainer
+                position="top-left"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+            />
         </div>
     );
 };

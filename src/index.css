@@ -1,2 +1,18 @@
 @import "tailwindcss";
 @plugin "daisyui";
+
+@layer base {
+    :root {
+        --customColor: hsla(272, 74%, 55%, 1);
+    }
+}
+
+@layer utilities {
+    .bg-customPurple {
+        background-color: var(--customColor);
+    }
+
+    .text-customPurple {
+        color: var(--customColor);
+    }
+}
