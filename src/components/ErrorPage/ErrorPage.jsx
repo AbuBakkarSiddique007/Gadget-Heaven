@@ -1,5 +1,9 @@
+import { useEffect } from "react";
 
 const ErrorPage = () => {
+    useEffect(() => {
+        document.title = "404 Page Not Found";
+    }, []);
     return (
         <div className="md:pl-[70px] relative bg-gray-200 h-screen w-full md:flex">
             <div className=" h-screen bg-gray-200  flex flex-col justify-center items-center md:items-start lg:w-full px-2.5 md:px-0">
