@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useLoaderData, useNavigate } from 'react-router-dom';
-import { getStoredCartList, getStoredWishList, clearCartList } from '../../Utilities/LocalStorage';
+import { getStoredCartList, getStoredWishList, clearCartList, removeFromStoredCartList, removeFromStoredWishList } from '../../Utilities/LocalStorage';
 import Card from '../Card/Card';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 
 const ListedCart = () => {
     const [cartList, setCartList] = useState([]);
@@ -35,23 +36,26 @@ const ListedCart = () => {
             setOriginalWishList(wishProductList);
         }
     }, [allProducts]);
+
     console.log(originalWishList);
-    
+    useEffect(() => {
+        document.title = "My Cart - My Gadget Store";
+    }, []);
+
 
     const handleSortByPrice = () => {
         const sortedCartList = [...originalCartList].sort((a, b) => b.price - a.price);
         setCartList(sortedCartList);
     };
-
     const handleRemoveFromCart = (productId) => {
         const updatedCartList = cartList.filter(product => product.product_id !== productId);
         setCartList(updatedCartList);
         setOriginalCartList(updatedCartList);
-
+        removeFromStoredCartList(productId);
         const updatedTotal = updatedCartList.reduce((sum, product) => sum + product.price, 0);
         setTotalAmount(updatedTotal);
 
-        toast.warn('Item successfully removed from your Cart!!', {
+        toast.warn('Item successfully removed from your Cart!', {
             position: "top-left",
             autoClose: 5000,
             hideProgressBar: false,
@@ -68,6 +72,7 @@ const ListedCart = () => {
         const updatedWishList = wishList.filter(product => product.product_id !== productId);
         setWishList(updatedWishList);
         setOriginalWishList(updatedWishList);
+        removeFromStoredWishList(productId);
 
         toast.warn('Item successfully removed from your WishList!', {
             position: "top-left",
@@ -101,6 +106,10 @@ const ListedCart = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Dashboard - My Gadget Store</title>
+            </Helmet>
+
             {/* Dashboard Text */}
             <div className="p-10 shadow-lg pt-5 pb-10 bg-customPurple text-white">
                 <h1 className="text-3xl font-bold text-center mt-10">Dashboard</h1>

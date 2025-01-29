@@ -5,6 +5,9 @@ import { IoMdHeart } from "react-icons/io";
 import { addToStoredCartList, addToStoredWishList } from "../../Utilities/LocalStorage";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import { useState } from "react";
+// import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+
 
 const ProductDetails = () => {
     const { product_id } = useParams();
@@ -45,7 +48,7 @@ const ProductDetails = () => {
 
     const handleAddToWishList = () => {
         addToStoredWishList(product_id);
-        setIsWishListClicked(true); 
+        setIsWishListClicked(true);
         toast.success("Item successfully added to your WishList!", {
             position: "top-left",
             autoClose: 5000,
@@ -59,8 +62,15 @@ const ProductDetails = () => {
         });
     };
 
+    useEffect(() => {
+        document.title = `${product_title} - My Gadget Store`;
+    }, [product_title]);
+
     return (
         <div>
+            {/* <Helmet>
+                <title>Product Details - My Gadget Store</title>
+            </Helmet> */}
             <div className="text-center text-white pt-10 pb-56 bg-customPurple">
                 <h1 className="text-4xl font-bold">Product Details</h1>
                 <p className="text-xl mt-5 mb-5">

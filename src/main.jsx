@@ -12,9 +12,6 @@ import ProductDetails from './components/ProuctDetails/ProductDetails.jsx';
 import ListedCart from './components/ListedCart/ListedCart.jsx';
 import Deals from './components/Deals/Deals.jsx';
 
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,7 +23,6 @@ const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
-        // path: 'books/:bookId',
         path: '/products/:product_id',
         element: <ProductDetails></ProductDetails>,
         loader: () => fetch('/FakeData.json')
@@ -48,5 +44,5 @@ const router = createBrowserRouter([
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
-  </StrictMode>,
+  </StrictMode>
 )

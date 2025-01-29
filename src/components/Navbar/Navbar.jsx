@@ -45,7 +45,7 @@ const Navbar = () => {
                     className={({ isActive }) =>
                         isActive
                             ? "border-1 border-gray-400 rounded-full bg-white text-black p-2"
-                            : "text-black hover:text-red-500"
+                            : "text-black hover:text-blue-500"
                     }
                 >
                     Deals
