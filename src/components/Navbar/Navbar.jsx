@@ -39,6 +39,18 @@ const Navbar = () => {
                     Statistics
                 </NavLink>
             </li> */}
+            <li className="text-xl font-semibold">
+                <NavLink
+                    to="/deals"
+                    className={({ isActive }) =>
+                        isActive
+                            ? "border-1 border-gray-400 rounded-full bg-white text-black p-2"
+                            : "text-black hover:text-red-500"
+                    }
+                >
+                    Deals
+                </NavLink>
+            </li>
 
             <li className="text-xl font-semibold">
                 <NavLink

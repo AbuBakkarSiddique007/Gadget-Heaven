@@ -10,6 +10,7 @@ import ErrorPage from './components/ErrorPage/ErrorPage.jsx';
 import Home from './components/Home/Home.jsx';
 import ProductDetails from './components/ProuctDetails/ProductDetails.jsx';
 import ListedCart from './components/ListedCart/ListedCart.jsx';
+import Deals from './components/Deals/Deals.jsx';
 
 
 
@@ -29,6 +30,11 @@ const router = createBrowserRouter([
         path: '/products/:product_id',
         element: <ProductDetails></ProductDetails>,
         loader: () => fetch('/FakeData.json')
+      },
+      {
+
+        path: '/deals',
+        element: <Deals></Deals>
       },
       {
         path: 'listedCart',
