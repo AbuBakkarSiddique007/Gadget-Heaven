@@ -1,8 +1,23 @@
-# React + Vite
+#  Digital Electronics Store
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🌐 Live Links
+- **Live Website**: [https://digital-electronics.surge.sh](https://digital-electronics.surge.sh)
+- **Requirement Document**: [Requirements](https://github.com/ProgrammingHero1/B10-A8-gadget-heaven)
 
-Currently, two official plugins are available:
+## ⚛️ React Fundamentals Used
+- **State Management**: `useState` for dynamic UI updates
+- **Persistent Storage**: `localStorage` for cart/wishlist data
+- **Lifecycle Management**: `useEffect` for side effects
+- **Routing**: React Router with nested routes
+- **Conditional Rendering**: Dynamic UI based on state
+- **Location Tracking**: `useLocation()` for route-based styling
+- **SEO Optimization**: React Helmet for dynamic metadata
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Data Management
+
+**Technology Used:**  
+ **LocalStorage** - For persistent client-side storage of cart/wishlist items
+
+**Key Implementations:**  
+✅ Automatic state ↔ storage synchronization via `useEffect`  
+✅ Initial data hydration from storage on app load  
