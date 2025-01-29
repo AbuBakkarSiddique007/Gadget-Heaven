@@ -3,7 +3,7 @@ import { useLoaderData, useNavigate } from 'react-router-dom';
 import { getStoredCartList, getStoredWishList, clearCartList, removeFromStoredCartList, removeFromStoredWishList } from '../../Utilities/LocalStorage';
 import Card from '../Card/Card';
 import { ToastContainer, toast, Bounce } from 'react-toastify';
-import { Helmet } from 'react-helmet';
+// import { Helmet } from 'react-helmet';
 
 const ListedCart = () => {
     const [cartList, setCartList] = useState([]);
@@ -37,9 +37,10 @@ const ListedCart = () => {
         }
     }, [allProducts]);
 
+
     console.log(originalWishList);
     useEffect(() => {
-        document.title = "My Cart - My Gadget Store";
+        document.title = "Dashboard - My Gadget Store";
     }, []);
 
 
@@ -68,12 +69,13 @@ const ListedCart = () => {
         });
     };
 
+
+
     const handleRemoveFromWishlist = (productId) => {
         const updatedWishList = wishList.filter(product => product.product_id !== productId);
         setWishList(updatedWishList);
         setOriginalWishList(updatedWishList);
         removeFromStoredWishList(productId);
-
         toast.warn('Item successfully removed from your WishList!', {
             position: "top-left",
             autoClose: 5000,
@@ -86,6 +88,7 @@ const ListedCart = () => {
             transition: Bounce,
         });
     };
+
 
     const handleAddToCartFromWishlist = () => {
         navigate('/');
@@ -104,11 +107,15 @@ const ListedCart = () => {
         navigate('/');
     };
 
+    console.log(cartList);
+    console.log(wishList);
+
+
     return (
         <div>
-            <Helmet>
+            {/* <Helmet>
                 <title>Dashboard - My Gadget Store</title>
-            </Helmet>
+            </Helmet> */}
 
             {/* Dashboard Text */}
             <div className="p-10 shadow-lg pt-5 pb-10 bg-customPurple text-white">
